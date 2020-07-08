@@ -102,10 +102,10 @@ def parse_config():
         for host in config['hosts']:
             if 'hysteresis' not in list(host.keys()):
                 host['hysteresis'] = 0
-            if len(host['temperatures']) != 3:
-                raise ConfigError('Host "{}" has {} temperature thresholds instead of 3.'.format(host['name'], len(host['temperatures'])))
-            if len(host['speeds']) != 3:
-                raise ConfigError('Host "{}" has {} fan speeds instead of 3.'.format(host['name'], len(host['speeds'])))
+            if len(host['temperatures']) != 6:
+                raise ConfigError('Host "{}" has {} temperature thresholds instead of 6.'.format(host['name'], len(host['temperatures'])))
+            if len(host['speeds']) != 6:
+                raise ConfigError('Host "{}" has {} fan speeds instead of 6.'.format(host['name'], len(host['speeds'])))
             if ('remote_temperature_command' in list(host.keys()) or 'remote_ipmi_credentials' in list(host.keys()))  and \
                 ('remote_temperature_command' not in list(host.keys()) or 'remote_ipmi_credentials' not in list(host.keys())):
                 raise ConfigError('Host "{}" must specify either none or both "remote_temperature_command" and "remote_ipmi_credentials" keys.'.format(host['name']))
@@ -185,8 +185,29 @@ def compute_fan_speed(temp_average, host):
         checkHysteresis(temp_average, 2, host)
     ):
         set_fan_speed(2, host)
+        
+    # Threshold2 < Tavg ≤ Threshold3
+    elif (
+        host['temperatures'][2] < temp_average <= host['temperatures'][3] and
+        checkHysteresis(temp_average, 3, host)
+    ):
+        set_fan_speed(3, host)
 
-    # Tavg > Threshold2
+    # Threshold3 < Tavg ≤ Threshold4
+    elif (
+        host['temperatures'][3] < temp_average <= host['temperatures'][4] and
+        checkHysteresis(temp_average, 4, host)
+    ):
+        set_fan_speed(4, host)
+    
+    # Threshold4 < Tavg ≤ Threshold5
+    elif (
+        host['temperatures'][4] < temp_average <= host['temperatures'][5] and
+        checkHysteresis(temp_average, 5, host)
+    ):
+        set_fan_speed(5, host)
+        
+    # Tavg > Threshold5
     elif host['temperatures'][2] < temp_average:
         set_fan_control("automatic", host)
 
