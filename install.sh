@@ -13,8 +13,10 @@ if [ ! -z "$1" ]; then
 fi
 
 echo "*** Installing packaged dependencies..."
-apt-get update
-apt-get install -y build-essential python-virtualenv python3-virtualenv python3-dev libsensors4-dev ipmitool
+yum update
+yum groupinstall -y  'Development Tools'
+yum install -y epel-release
+yum install -y ipmitool python3 python3-devel lm_sensors-devel
 
 echo "*** Creating folder '$TARGETDIR'..."
 if [ ! -d "$TARGETDIR" ]; then
@@ -23,7 +25,7 @@ fi
 
 echo "*** Creating and activating Python3 virtualenv..."
 if [ ! -d "$TARGETDIR/venv" ]; then
-    virtualenv -p python3 "$TARGETDIR/venv"
+    python3 -m venv "$TARGETDIR/venv"
 fi
 source "$TARGETDIR/venv/bin/activate"
 
