@@ -48,8 +48,8 @@
 Clone the repo and run the installation script as root to configure the system or upgrade the already installed controller:
 
 ```text
-git clone https://github.com/duncanenman/r710-fan-controller.git
-cd r710-fan-controller
+git clone https://github.com/duncanenman/dell-fan-controller.git
+cd dell-fan-controller
 sudo ./install.sh [<installation path>]
 ```
 
