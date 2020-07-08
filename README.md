@@ -21,27 +21,6 @@
 1. CentOS 8 (might work on earlier versions if Python 3 is installed)
 2. **IPMI Over LAN** is enabled in all used iDRACs (_Login > Network/Security > IPMI Settings_).
    + May not be needed if you're only managing the local machine.
-3. `lm-sensors` is installed and configured on the local machine.
-   + Example output of `sensors` for a dual CPU system:
-        ```text
-        coretemp-isa-0000
-        Adapter: ISA adapter
-        Core 0:       +38.0°C  (high = +69.0°C, crit = +79.0°C)
-        Core 1:       +46.0°C  (high = +69.0°C, crit = +79.0°C)
-        Core 2:       +40.0°C  (high = +69.0°C, crit = +79.0°C)
-        Core 8:       +43.0°C  (high = +69.0°C, crit = +79.0°C)
-        Core 9:       +39.0°C  (high = +69.0°C, crit = +79.0°C)
-        Core 10:      +39.0°C  (high = +69.0°C, crit = +79.0°C)
-
-        coretemp-isa-0001
-        Adapter: ISA adapter
-        Core 0:       +29.0°C  (high = +69.0°C, crit = +79.0°C)
-        Core 1:       +35.0°C  (high = +69.0°C, crit = +79.0°C)
-        Core 2:       +29.0°C  (high = +69.0°C, crit = +79.0°C)
-        Core 8:       +34.0°C  (high = +69.0°C, crit = +79.0°C)
-        Core 9:       +33.0°C  (high = +69.0°C, crit = +79.0°C)
-        Core 10:      +31.0°C  (high = +69.0°C, crit = +79.0°C)
-        ```
 
 ## Installation / Upgrade
 
