@@ -1,9 +1,12 @@
-# Dell R710 Fan Control Script
+# Dell Fan Control Script 
 
-> A temperature-based fan speed controller for Dell servers (tested on an R710, should work with most PowerEdges). Supports both local and remote hosts.
+### NOTE: This is a fork of [nmaggioni/r710-fan-controller](nmaggioni/r710-fan-controller), for installation on RHEL / CentOS 8. The original project is built on Ubuntu.
 
 
-- [Dell R710 Fan Control Script](#dell-r710-fan-control-script)
+> A temperature-based fan speed controller for Dell servers (tested on an R710 & R620, should work with most PowerEdges). Supports both local and remote hosts.
+
+
+- [Dell Fan Control Script](#dell-r710-fan-control-script)
   - [Requisites](#requisites)
   - [Installation / Upgrade](#installation--upgrade)
   - [Configuration](#configuration)
@@ -45,7 +48,7 @@
 Clone the repo and run the installation script as root to configure the system or upgrade the already installed controller:
 
 ```text
-git clone https://github.com/nmaggioni/r710-fan-controller.git
+git clone https://github.com/duncanenman/r710-fan-controller.git
 cd r710-fan-controller
 sudo ./install.sh [<installation path>]
 ```
@@ -93,6 +96,6 @@ This controller can monitor the temperature and change the fan speed of remote h
 
 ## Credits
 
-Major thanks go to [NoLooseEnds's directions](https://github.com/NoLooseEnds/Scripts/tree/master/R710-IPMI-TEMP) for the core commands and [sulaweyo's ruby script](https://github.com/sulaweyo/r710-fan-control) for the idea of automating them.
+This is a fork of [nmaggioni/r710-fan-controller](nmaggioni/r710-fan-controller). Major thanks go to [NoLooseEnds's directions](https://github.com/NoLooseEnds/Scripts/tree/master/R710-IPMI-TEMP) for the core commands and [sulaweyo's ruby script](https://github.com/sulaweyo/r710-fan-control) for the idea of automating them. 
 
 **Note:** The key difference of this script, other than handling remote hosts, is that it's based on the temperature of the CPUs' cores and not on the ambient temperature sensor on the server's motherboard. The R710 does not expose CPU temperature over IPMI, but other models do; this script should work with them nonetheless.
