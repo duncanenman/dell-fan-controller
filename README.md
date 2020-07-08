@@ -18,7 +18,7 @@
 
 ## Requisites
 
-1. Python 3 is installed.
+1. CentOS 8 (might work on earlier versions if Python 3 is installed)
 2. **IPMI Over LAN** is enabled in all used iDRACs (_Login > Network/Security > IPMI Settings_).
    + May not be needed if you're only managing the local machine.
 3. `lm-sensors` is installed and configured on the local machine.
