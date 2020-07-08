@@ -21,6 +21,10 @@
 1. CentOS 8 (might work on earlier versions if Python 3 is installed)
 2. **IPMI Over LAN** is enabled in all used iDRACs (_Login > Network/Security > IPMI Settings_).
    + May not be needed if you're only managing the local machine.
+3. git installled. If not yet installed, run:
+    ```text
+    yum install -y git
+    ```
 
 ## Installation / Upgrade
 
