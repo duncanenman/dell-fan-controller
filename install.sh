@@ -16,7 +16,7 @@ echo "*** Installing packaged dependencies..."
 yum update
 yum groupinstall -y  'Development Tools'
 yum install -y epel-release
-yum install -y ipmitool python3 python3-devel lm_sensors-devel
+yum install -y ipmitool python3 python3-devel lm_sensors lm_sensors-devel
 
 echo "*** Creating folder '$TARGETDIR'..."
 if [ ! -d "$TARGETDIR" ]; then
